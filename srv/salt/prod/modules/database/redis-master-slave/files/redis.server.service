@@ -1,0 +1,13 @@
+t]
+Description=Redis data structure server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/redis-server /etc/redis.conf  --supervised systemd
+ExecStop=/usr/bin/kill -9 $MAINPID
+Type=notify
+
+[Install]
+WantedBy=multi-user.target
+
